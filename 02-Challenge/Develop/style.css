@@ -3,6 +3,14 @@ body {
   font-size: 16px;
 }
 
+.function {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px;
+  
+}
+
 textarea {
   background: transparent;
   border: none;
@@ -21,7 +29,7 @@ textarea {
 }
 
 .row {
-  border-top: 1px solid rgb(233, 7, 7);
+  border-top: 1px solid rgb(7, 7, 7);
 }
 
 .hour {
