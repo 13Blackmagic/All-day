@@ -8,6 +8,7 @@ $(function (displayTime) {
    var currentHour = dayjs().format('H');
     var currentDay = dayjs().format('dddd, MMMM Do');
     var rightNow = dayjs().format('mmm DD, YYYY [at] hh:mm:ss a');
+    var saveBtn = $('.saveBtn');
     console.log(rightNow);
     timeDisplayEl.text(rightNow);
     setInterval(displayTime, 1000);
@@ -17,6 +18,7 @@ $(function (displayTime) {
       textArea.text = localStorage.getItem('textArea');
     }
   
+
 
 
     // TODO: Add a listener for click events on the save button. This code should
