@@ -4,7 +4,7 @@
   const store = window.localStorage;
 const container = $(".container");
   
-  const currentTime = { text: moment().format ("h:00 A"), hour: moment().hour() };
+  const currentTime = { text: day.js().format ("h:00 A"), hour: day.js().hour() };
   
   $("#day").text(now.format("dddd MMMM DD, YYYY"));
   
@@ -16,8 +16,8 @@ const container = $(".container");
   };
   
   const hoursOfTheDay = Array.from(new Array(24)).map((v, i) => {
-    const text = moment().hour(i).format("h:00 A");
-    const hour = moment().hour(i);
+    const text = day.js().hour(i).format("h:00 A");
+    const hour = day.js().hour(i);
     return { text, hour };
   });
   
