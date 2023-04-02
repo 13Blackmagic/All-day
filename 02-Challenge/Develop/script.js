@@ -2,26 +2,52 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function (displayTime) {
-   var timeDisplayEl = $('#time-display');
-   var timeBlock = $('.time-block');
-    var textArea = $('.description');
-   var currentHour = dayjs().format('H');
-    var currentDay = dayjs().format('dddd, MMMM Do');
-    var rightNow = dayjs().format('mmm DD, YYYY [at] hh:mm:ss a');
-    var saveBtn = $('.saveBtn');
-    console.log(rightNow);
-    timeDisplayEl.text(rightNow);
-    setInterval(displayTime, 1000);
-    
-    function displayTime() {
-      timeDisplayEl.text(dayjs().format('h:mm:ss a'));
-      textArea.text = localStorage.getItem('textArea');
-    }
+const store = window.localStorage;
+const container = $(".container");
+const now = moment();
+const currentTime = { text: moment().format("dddd, MMMM Do YYYY, h:mm:ss a"), hour: moment().format("H") };
+
+$("#day").text(now.format("dddd, MMMM Do YYYY, h:mm:ss a"));
+
+const range = (start, end, step) => {
+  return Array.from(Array.from(Array(Math.ceil((end - start) / step)).keys()), (x, i) => start + i * step);
+};
+
+function color(time) {
+  if (time < currentTime.hour) {
+    return "past";
+  } else if (time > currentTime.hour) {
+    return "future";
+  } else {
+    return "present";
+  }
+
+function createRow(time) {
+  const row = $("<div8>").addClass("row time-block");
+  const hour = $("<div>").addClass("hour col-1").text(moment(time, "H").format("hA"));
+  const text = $("<textarea>").addClass("description col-10").attr("id", time);
+  const save = $("<button>").addClass("saveBtn col-1").html('<i class="fas fa-save"></i>');
+
+  row.append(hour, text, save);
+  container.append(row);
+
+  const stored = store.getItem(time);
+  if (stored) {
+    text.text(stored);
+  }
+
+  const saveBtn = $(`#${time}`).siblings(".saveBtn");
+  saveBtn.on("click", function () {
+    const text = $(`#${time}`).val();
+    store.setItem(time, text);
+  });
   
 
+  text.addClass(color(time));
 
-
-    // TODO: Add a listener for click events on the save button. This code should
+}
+  }
+  // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
     // function? How can DOM traversal be used to get the "hour-x" id of the
@@ -39,5 +65,4 @@ $(function (displayTime) {
     // attribute of each time-block be used to do this?
     //
     // TODO: Add code to display the current date in the header of the page.
-  });
-  
+});
