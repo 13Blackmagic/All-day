@@ -100,6 +100,16 @@ const container = $(".container");
     // attribute of each time-block be used to do this?
     //
     $('#div8 .description').val(localStorage.getItem('div8'));
+    $('#div9 .description').val(localStorage.getItem('div9'));
+    $('#div10 .description').val(localStorage.getItem('div10'));
+    $('#div11 .description').val(localStorage.getItem('div11'));
+    $('#div12 .description').val(localStorage.getItem('div12'));
+    $('#div13 .description').val(localStorage.getItem('div13'));
+    $('#div14 .description').val(localStorage.getItem('div14'));
+    $('#div15 .description').val(localStorage.getItem('div15'));
+    $('#div16 .description').val(localStorage.getItem('div16'));
+    $('#div17 .description').val(localStorage.getItem('div17'));
+
 
     // TODO: Add code to display the current date in the header of the page.
   });
