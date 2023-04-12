@@ -2,76 +2,76 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(document).ready(function () {
-const store = window.localStorage;
-const container = $(".container");
+// const store = window.localStorage;
+// const container = $(".container");
   
-  const currentTime = { text: dayjs().format ("h:00 A"), hour: dayjs().hour() };
+//   //const currentTime = { text: dayjs().format ("h:00 A"), hour: dayjs().hour() };
   
-  const range = (start, end, step) => {
-    return Array.from(
-      Array.from(Array(Math.ceil((end - start) / step)).keys()),
-      (x) => start + x * step
-    );
-  };
+//   const range = (start, end, step) => {
+//     return Array.from(
+//       Array.from(Array(Math.ceil((end - start) / step)).keys()),
+//       (x) => start + x * step
+//     );
+//   };
   
-  const hoursOfTheDay = Array.from(new Array(24)).map((v, i) => {
-    const text = dayjs().hour(i).format("h:00 A");
-    const hour = dayjs().hour(i);
-    return { text, hour };
-  });
+//   const hoursOfTheDay = Array.from(new Array(24)).map((v, i) => {
+//     const text = dayjs().hour(i).format("h:00 A");
+//     const hour = dayjs().hour(i);
+//     return { text, hour };
+//   });
   
-  function color(hr) {
-    if (hr.hour.isBefore(currentTime.hour)) {
-      return "bg-gray-300";
-    } else if (hr.hour.isAfter(currentTime.hour)) {
-      return "bg-green-300";
-    } else {
-      return "bg-red-300";
-    }
-  }
+//   function color(hr) {
+//     if (hr.hour.isBefore(currentTime.hour)) {
+//       return "bg-gray-300";
+//     } else if (hr.hour.isAfter(currentTime.hour)) {
+//       return "bg-green-300";
+//     } else {
+//       return "bg-red-300";
+//     }
+//   }
 
-  hoursOfTheDay.forEach((hr) => {
-    const grid = $(
-      `<form data-name="${hr.text}" class="grid grid-cols-12  border-gray-500 "></form>.`
-    );
+//   hoursOfTheDay.forEach((hr) => {
+//     const grid = $(
+//       `<form data-name="${hr.text}" class="grid grid-cols-12  border-gray-500 "></form>.`
+//     );
   
-    const time = $(
-      `<div class="flex items-center justify-center col-span-2 h-16">${hr.text}</div>`
-    );
+//     const time = $(
+//       `<div class="flex items-center justify-center col-span-2 h-16">${hr.text}</div>`
+//     );
   
-    const textArea = $(
-      `<textarea name="${
-        hr.text
-      }" maxLength="50" style="resize: none; overflow: hidden;" class="col-span-8 h-16 p-6 ${color(
-        hr
-      )}">${store.getItem(hr.text) || ""}</textarea>`
-    );
+//     const textArea = $(
+//       `<textarea name="${
+//         hr.text
+//       }" maxLength="50" style="resize: none; overflow: hidden;" class="col-span-8 h-16 p-6 ${color(
+//         hr
+//       )}">${store.getItem(hr.text) || ""}</textarea>`
+//     );
   
-    textArea.keydown((e) => {
-      if (e.keyCode == 13 && !e.shiftKey) {
-        e.preventDefault();
-        return false;
-      }
-    });
+//     textArea.keydown((e) => {
+//       if (e.keyCode == 13 && !e.shiftKey) {
+//         e.preventDefault();
+//         return false;
+//       }
+//     });
   
-    const saveButton = $(
-      `<button type="submit" class="col-span-2 h-16 bg-indigo-500 text-white font-bold hover:bg-indigo-400 transition duration-500 ease-in-out"><i class="fas fa-save text-xl"></i></button>`
-    );
+//     const saveButton = $(
+//       `<button type="submit" class="col-span-2 h-16 bg-indigo-500 text-white font-bold hover:bg-indigo-400 transition duration-500 ease-in-out"><i class="fas fa-save text-xl"></i></button>`
+//     );
   
-    grid.submit((e) => {
-      e.preventDefault();
+//     grid.submit((e) => {
+//       e.preventDefault();
   
-      const value = $(`textarea[name="${hr.text}"]`).val();
+//       const value = $(`textarea[name="${hr.text}"]`).val();
   
-      store.setItem(hr.text, value);
-    });
+//       store.setItem(hr.text, value);
+//     });
   
-    grid.append(time);
-    grid.append(textArea);
-    grid.append(saveButton);
+//     grid.append(time);
+//     grid.append(textArea);
+//     grid.append(saveButton);
   
-    container.append(grid);
-  });
+//     container.append(grid);
+//   });
   // Done: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
