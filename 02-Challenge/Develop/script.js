@@ -95,7 +95,7 @@ const container = $(".container");
     // past, present, and future classes? How can Day.js be used to get the
     // current hour in 24-hour time?
     //
-    // Doing: Add code to get any user input that was saved in localStorage and set
+    // Done: Add code to get any user input that was saved in localStorage and set
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
     //
@@ -111,5 +111,8 @@ const container = $(".container");
     $('#div17 .description').val(localStorage.getItem('div17'));
 
 
-    // TODO: Add code to display the current date in the header of the page.
+    // Doing: Add code to display the current date in the header of the page.
+    // HINT: How can the Day.js library be used to get the current date?
+    $("#currentDay").text(dayjs().format("dddd, MMMM D, YYYY"));
+
   });
