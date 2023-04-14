@@ -97,6 +97,7 @@ $(document).ready(function () {
     //
     var currentHour = dayjs().hour();
     console.log("currenthour= ",currentHour);
+    var currentTime = dayjs().format("h:00 A");
     $(".time-block").each(function () {
       var blockHour = parseInt($(this).attr("id")[3] + $(this).attr("id")[4]);
       console.log("blockhour= ",blockHour);
