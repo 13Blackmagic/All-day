@@ -95,6 +95,7 @@ $(document).ready(function () {
     // past, present, and future classes? How can Day.js be used to get the
     // current hour in 24-hour time?
     //
+    var timeDisplayEl = $("#time-display");
     var currentHour = dayjs().hour();
     console.log("currenthour= ",currentHour);
     var currentTime = dayjs().format("h:00 A");
@@ -116,6 +117,12 @@ $(document).ready(function () {
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
     //
+    function displayTime() {
+      var rightNow = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
+      timeDisplayEl.text(rightNow);
+    }
+    setInterval(displayTime, 1000);
+
     $('#div8 .description').val(localStorage.getItem('div8'));
     $('#div9 .description').val(localStorage.getItem('div9'));
     $('#div10 .description').val(localStorage.getItem('div10'));
