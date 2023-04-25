@@ -97,15 +97,18 @@ $(document).ready(function () {
     //
     var timeDisplayEl = $("#time-display");
     var currentHour = dayjs().hour();
+    var currentMinute = dayjs().minute();
+    var currentSecond = dayjs().second();
     console.log("currenthour= ",currentHour);
     var currentTime = dayjs().format("h:00 A");
+    console.log("currenttime= ",currentTime);
     $(".time-block").each(function () {
       var blockHour = parseInt($(this).attr("id")[3] + $(this).attr("id")[4]);
       console.log("blockhour= ",blockHour);
-      if (blockHour < currentHour) {
+      if (blockHour < currentHour) { //if the blockhour is less than the current hour, then it is in the past
         $(this).addClass("past");
-      } else if (blockHour === currentHour) {
-        $(this).removeClass("past");
+      } else if (blockHour === currentHour) { //if the blockhour is equal to the current hour, then it is in the present
+        $(this).removeClass("past"); 
         $(this).addClass("present");
       } else {
         $(this).removeClass("past");
@@ -120,9 +123,10 @@ $(document).ready(function () {
     function displayTime() {
       var rightNow = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
       timeDisplayEl.text(rightNow);
-    }
-    setInterval(displayTime, 1000);
+      timeInterval = setInterval(displayTime, 1000);
 
+    }
+    // get any user input that was saved in localStorage and set
     $('#div8 .description').val(localStorage.getItem('div8'));
     $('#div9 .description').val(localStorage.getItem('div9'));
     $('#div10 .description').val(localStorage.getItem('div10'));
@@ -134,9 +138,13 @@ $(document).ready(function () {
     $('#div16 .description').val(localStorage.getItem('div16'));
     $('#div17 .description').val(localStorage.getItem('div17'));
 
-
     // Done: Add code to display the current date in the header of the page.
     // HINT: How can the Day.js library be used to get the current date?
-    $("#currentDay").text(dayjs().format("dddd, MMMM D, YYYY"));
+    
+    $("#currentDay").text(dayjs().format("dddd, MMMM D, YYYY, [at] hh:mm:ss a,"));
+
+
+    displayTime;
+    setInterval(displayTime, 1000);
 
   });

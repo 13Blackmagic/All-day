@@ -40,17 +40,17 @@ textarea {
 
 .past {
   background-color: #d66a6a;
-  color: white;
+  color: rgb(248, 10, 10);
 }
 
 .present {
-  background-color: #ff6961;
-  color: white;
+  background-color: #0fdb20;
+  color: rgb(8, 238, 85);
 }
 
 .future {
-  background-color: #77dd77;
-  color: white;
+  background-color: #a271f1;
+  color: rgb(138, 90, 228);
 }
 
 .saveBtn {
