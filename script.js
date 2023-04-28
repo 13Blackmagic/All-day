@@ -97,11 +97,7 @@ $(document).ready(function () {
     //
     var timeDisplayEl = $("#time-display");
     var currentHour = dayjs().hour();
-    var currentMinute = dayjs().minute();
-    var currentSecond = dayjs().second();
     console.log("currenthour= ",currentHour);
-    var currentTime = dayjs().format("h:00 A");
-    console.log("currenttime= ",currentTime);
     $(".time-block").each(function () {
       var blockHour = parseInt($(this).attr("id")[3] + $(this).attr("id")[4]);
       console.log("blockhour= ",blockHour);
@@ -123,8 +119,6 @@ $(document).ready(function () {
     function displayTime() {
       var rightNow = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
       timeDisplayEl.text(rightNow);
-      timeInterval = setInterval(displayTime, 1000);
-
     }
     // get any user input that was saved in localStorage and set
     $('#div8 .description').val(localStorage.getItem('div8'));
